@@ -16,7 +16,15 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_SECRET,
       // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
       // @ts-ignore
-      scope: "read:user",
+ profile(profile) {
+        return {
+          id: profile.id.toString(),
+          name: profile.name || profile.login,
+          gh_username: profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+        };
+      },
     }),
   //  GoogleProvider({
     //  clientId: "296234710482-267v2f3ov1b1gghjphieb24il20o9f8v.apps.googleusercontent.com",
