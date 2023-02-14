@@ -18,7 +18,7 @@ export default async function middleware(req: NextRequest) {
   const url = req.nextUrl;
 
   // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
-  const hostname = req.headers.get("host") || "app.paybase.dev";
+  const hostname = req.headers.get("host") || "app.tensical.com";
 
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
   const path = url.pathname;
@@ -31,7 +31,7 @@ export default async function middleware(req: NextRequest) {
   const currentHost =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
       ? hostname
-          .replace(`.paybase.dev`, "")
+          .replace(`.tensical.com`, "")
       : hostname.replace(`.localhost:3000`, "");
 
   // rewrites for app pages

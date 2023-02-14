@@ -4,7 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 
-const VERCEL_DEPLOYMENT = ".paybase.dev";
+const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;;
 
 if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET || !process.env.GOOGLE_CLIENT_SECRET)
   throw new Error("Failed to initialize authentication");
@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
-        domain: VERCEL_DEPLOYMENT ? ".vercel.pub" : undefined,
+        domain: VERCEL_DEPLOYMENT ? ".tensical.com" : undefined,
         secure: VERCEL_DEPLOYMENT,
       },
     },

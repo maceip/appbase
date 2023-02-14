@@ -5,7 +5,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { urlPath } = req.body;
-  res.setHeader("Access-Control-Allow-Origin", "https://app.paybase.dev");
+  res.setHeader("Access-Control-Allow-Origin", "https://app.tensical.com");
   res.setHeader("Access-Control-Allow-Methods", "POST");
 
   try {
