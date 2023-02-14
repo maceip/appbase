@@ -35,8 +35,7 @@ export default async function middleware(req: NextRequest) {
   const currentHost =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
       ? hostname
-          .replace(`.vercel.pub`, "")
-          .replace(`.platformize.vercel.app`, "")
+          .replace(`.paybase.dev`, "")
       : hostname.replace(`.localhost:3000`, "");
 
   // rewrites for app pages
