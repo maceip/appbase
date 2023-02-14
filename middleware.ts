@@ -35,6 +35,8 @@ export default async function middleware(req: NextRequest) {
       : hostname.replace(`.localhost:3000`, "");
 
   // rewrites for app pages
+  console.log("currenthost: " + currentHost)
+  console.log("url :" + url)
   if (currentHost == "app") {
     if (
       url.pathname === "/login" &&
