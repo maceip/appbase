@@ -37,7 +37,7 @@ export default async function middleware(req: NextRequest) {
   // rewrites for app pages
   console.log("currenthost: " + currentHost)
   console.log("url :" + url)
-  if (currentHost == "app") {
+  if (currentHost == "zap") {
     if (
       url.pathname === "/login" &&
       (req.cookies.get("next-auth.session-token") ||
