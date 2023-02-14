@@ -1,5 +1,5 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
@@ -10,12 +10,18 @@ if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET || !process.env.GOOGLE_
   throw new Error("Failed to initialize authentication");
 
 export const authOptions: NextAuthOptions = {
-  debug: true,
   providers: [
-    GoogleProvider({
-      clientId: "296234710482-267v2f3ov1b1gghjphieb24il20o9f8v.apps.googleusercontent.com",
-      clientSecret: "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",
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
+      // @ts-ignore
+      scope: "read:user",
     }),
+  //  GoogleProvider({
+    //  clientId: "296234710482-267v2f3ov1b1gghjphieb24il20o9f8v.apps.googleusercontent.com",
+     // clientSecret: "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",
+   // }),
   ],
   pages: {
     signIn: `/login`,
