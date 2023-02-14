@@ -81,7 +81,7 @@ export default function Login() {
             disabled={loading}
             onClick={() => {
               setLoading(true);
-              signIn("github");
+              signIn("google");
             }}
             className={`${
               loading ? "cursor-not-allowed bg-gray-600" : "bg-black"
